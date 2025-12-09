@@ -1,0 +1,158 @@
+openapi: 3.0.4
+info:
+  title: Markdown Link Extractor
+  description: Markdown Link Extractor parses markdown documents and extracts all links including inline, reference, autolinks, and image URLs.
+  termsOfService: https://apiverve.com/terms/
+  contact:
+    name: APIVerve Support
+    email: hello@apiverve.com
+    url: https://apiverve.com/contact
+  version: 1.0.9
+externalDocs:
+  description: Learn more about APIVerve
+  url: https://docs.apiverve.com?utm_source=openapi
+servers:
+- url: https://api.apiverve.com/
+paths:
+  /v1/markdownlinkextractor:
+    post:
+      summary: Extract Links from Markdown
+      description: Markdown Link Extractor parses markdown documents and extracts all links including inline, reference, autolinks, and image URLs.
+      operationId: markdownlinkextractor
+      parameters: []
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: status
+                  error:
+                    type: string
+                    description: error
+                  data:
+                    type: string
+                    description: data
+              example:
+                status: ok
+                error: 
+                data:
+                  totalLinks: 6
+                  links:
+                  - text: this link
+                    url: https://example.com
+                    type: inline
+                  - text: another one
+                    url: https://test.com
+                    type: inline
+                  - text: Image
+                    url: https://example.com/image.png
+                    type: inline
+                  - text: Reference link
+                    url: https://reference.com
+                    type: reference
+                    reference: ref1
+                  - text: https://autolink.com
+                    url: https://autolink.com
+                    type: autolink
+                  - text: https://bare-url.com
+                    url: https://bare-url.com
+                    type: bare
+                  categories:
+                    internal:
+                      count: 0
+                      links: []
+                    external:
+                      count: 6
+                      links:
+                      - text: this link
+                        url: https://example.com
+                        type: inline
+                      - text: another one
+                        url: https://test.com
+                        type: inline
+                      - text: Image
+                        url: https://example.com/image.png
+                        type: inline
+                      - text: Reference link
+                        url: https://reference.com
+                        type: reference
+                        reference: ref1
+                      - text: https://autolink.com
+                        url: https://autolink.com
+                        type: autolink
+                      - text: https://bare-url.com
+                        url: https://bare-url.com
+                        type: bare
+                    email:
+                      count: 0
+                      links: []
+                    other:
+                      count: 0
+                      links: []
+                  markdownLength: 253
+        '401':
+          description: Your request was not authorized, or your API Key was invalid
+        '404':
+          description: Requested resource was not found
+        '500':
+          description: A server error has occured, try again later
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                markdown:
+                  type: string
+                  description: Markdown text to parse (max 100,000 characters)
+                  example: >-
+                    # Sample Document
+
+
+                    Check out [this link](https://example.com) and [another one](https://test.com).
+
+
+                    ![Image](https://example.com/image.png)
+
+
+                    Visit <https://autolink.com> or just https://bare-url.com
+
+
+                    [Reference link][ref1]
+
+
+                    [ref1]: https://reference.com
+              required:
+              - markdown
+              example:
+                markdown: >-
+                  # Sample Document
+
+
+                  Check out [this link](https://example.com) and [another one](https://test.com).
+
+
+                  ![Image](https://example.com/image.png)
+
+
+                  Visit <https://autolink.com> or just https://bare-url.com
+
+
+                  [Reference link][ref1]
+
+
+                  [ref1]: https://reference.com
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: x-api-key
+      in: header
+security:
+- api_key: []
