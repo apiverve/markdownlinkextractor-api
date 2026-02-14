@@ -1,23 +1,25 @@
 openapi: 3.0.4
 info:
   title: Markdown Link Extractor
-  description: Markdown Link Extractor parses markdown documents and extracts all links including inline, reference, autolinks, and image URLs.
+  description: >-
+    Markdown Link Extractor parses markdown documents and extracts all links
+    including inline, reference, autolinks, and image URLs.
   termsOfService: https://apiverve.com/terms/
   contact:
     name: APIVerve Support
     email: hello@apiverve.com
     url: https://apiverve.com/contact
-  version: 1.0.9
+  version: 1.0.0
 externalDocs:
   description: Learn more about APIVerve
   url: https://docs.apiverve.com?utm_source=openapi
 servers:
-- url: https://api.apiverve.com/
+  - url: https://api.apiverve.com/
 paths:
   /v1/markdownlinkextractor:
     post:
       summary: Extract Links from Markdown
-      description: Markdown Link Extractor parses markdown documents and extracts all links including inline, reference, autolinks, and image URLs.
+      description: Parse markdown and extract all links with categorization
       operationId: markdownlinkextractor
       parameters: []
       responses:
@@ -35,33 +37,33 @@ paths:
                     type: string
                     description: error
                   data:
-                    type: string
+                    type: object
                     description: data
               example:
                 status: ok
-                error: 
+                error: null
                 data:
                   totalLinks: 6
                   links:
-                  - text: this link
-                    url: https://example.com
-                    type: inline
-                  - text: another one
-                    url: https://test.com
-                    type: inline
-                  - text: Image
-                    url: https://example.com/image.png
-                    type: inline
-                  - text: Reference link
-                    url: https://reference.com
-                    type: reference
-                    reference: ref1
-                  - text: https://autolink.com
-                    url: https://autolink.com
-                    type: autolink
-                  - text: https://bare-url.com
-                    url: https://bare-url.com
-                    type: bare
+                    - text: this link
+                      url: https://example.com
+                      type: inline
+                    - text: another one
+                      url: https://test.com
+                      type: inline
+                    - text: Image
+                      url: https://example.com/image.png
+                      type: inline
+                    - text: Reference link
+                      url: https://reference.com
+                      type: reference
+                      reference: ref1
+                    - text: https://autolink.com
+                      url: https://autolink.com
+                      type: autolink
+                    - text: https://bare-url.com
+                      url: https://bare-url.com
+                      type: bare
                   categories:
                     internal:
                       count: 0
@@ -69,25 +71,25 @@ paths:
                     external:
                       count: 6
                       links:
-                      - text: this link
-                        url: https://example.com
-                        type: inline
-                      - text: another one
-                        url: https://test.com
-                        type: inline
-                      - text: Image
-                        url: https://example.com/image.png
-                        type: inline
-                      - text: Reference link
-                        url: https://reference.com
-                        type: reference
-                        reference: ref1
-                      - text: https://autolink.com
-                        url: https://autolink.com
-                        type: autolink
-                      - text: https://bare-url.com
-                        url: https://bare-url.com
-                        type: bare
+                        - text: this link
+                          url: https://example.com
+                          type: inline
+                        - text: another one
+                          url: https://test.com
+                          type: inline
+                        - text: Image
+                          url: https://example.com/image.png
+                          type: inline
+                        - text: Reference link
+                          url: https://reference.com
+                          type: reference
+                          reference: ref1
+                        - text: https://autolink.com
+                          url: https://autolink.com
+                          type: autolink
+                        - text: https://bare-url.com
+                          url: https://bare-url.com
+                          type: bare
                     email:
                       count: 0
                       links: []
@@ -100,7 +102,7 @@ paths:
         '404':
           description: Requested resource was not found
         '500':
-          description: A server error has occured, try again later
+          description: A server error has occurred, try again later
       requestBody:
         required: true
         content:
@@ -111,43 +113,8 @@ paths:
                 markdown:
                   type: string
                   description: Markdown text to parse (max 100,000 characters)
-                  example: >-
-                    # Sample Document
-
-
-                    Check out [this link](https://example.com) and [another one](https://test.com).
-
-
-                    ![Image](https://example.com/image.png)
-
-
-                    Visit <https://autolink.com> or just https://bare-url.com
-
-
-                    [Reference link][ref1]
-
-
-                    [ref1]: https://reference.com
               required:
-              - markdown
-              example:
-                markdown: >-
-                  # Sample Document
-
-
-                  Check out [this link](https://example.com) and [another one](https://test.com).
-
-
-                  ![Image](https://example.com/image.png)
-
-
-                  Visit <https://autolink.com> or just https://bare-url.com
-
-
-                  [Reference link][ref1]
-
-
-                  [ref1]: https://reference.com
+                - markdown
 components:
   securitySchemes:
     api_key:
@@ -155,4 +122,23 @@ components:
       name: x-api-key
       in: header
 security:
-- api_key: []
+  - api_key: []
+sampleRequest:
+  markdown: >-
+    # Sample Document
+
+
+    Check out [this link](https://example.com) and [another
+    one](https://test.com).
+
+
+    ![Image](https://example.com/image.png)
+
+
+    Visit <https://autolink.com> or just https://bare-url.com
+
+
+    [Reference link][ref1]
+
+
+    [ref1]: https://reference.com
