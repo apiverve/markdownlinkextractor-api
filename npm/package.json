@@ -1,6 +1,6 @@
 {
   "name": "@apiverve/markdownlinkextractor",
-  "version": "1.1.13",
+  "version": "1.1.14",
   "description": "Markdown Link Extractor parses markdown documents and extracts all links including inline, reference, autolinks, and image URLs.",
   "main": "index.js",
   "types": "index.d.ts",
