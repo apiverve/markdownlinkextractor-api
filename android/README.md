@@ -26,7 +26,7 @@ Add the dependency:
 
 ```gradle
 dependencies {
-    implementation 'com.github.apiverve:markdownlinkextractor-api:1.1.13'
+    implementation 'com.github.apiverve:markdownlinkextractor-api:1.1.14'
 }
 ```
 
@@ -47,7 +47,17 @@ MarkdownLinkExtractorAPIClient client = new MarkdownLinkExtractorAPIClient("YOUR
 try {
     // Prepare request parameters
     Map<String, Object> parameters = new HashMap<>();
-    parameters.put("markdown", "# Title\n\n[Link](https://example.com)");
+    parameters.put("markdown", "# Sample Document
+
+Check out [this link](https://example.com) and [another one](https://test.com).
+
+![Image](https://example.com/image.png)
+
+Visit <https://autolink.com> or just https://bare-url.com
+
+[Reference link][ref1]
+
+[ref1]: https://reference.com");
 
     // Execute the request
     APIResponse response = client.execute(parameters);
