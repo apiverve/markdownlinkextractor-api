@@ -44,7 +44,17 @@ from apiverve_markdownlinkextractor.apiClient import MarkdownlinkextractorAPICli
 # Initialize the client with your APIVerve API key
 api = MarkdownlinkextractorAPIClient("[YOUR_API_KEY]")
 
-query = { "markdown": "# Sample Document\n\nCheck out [this link](https://example.com) and [another one](https://test.com).\n\n![Image](https://example.com/image.png)\n\nVisit <https://autolink.com> or just https://bare-url.com\n\n[Reference link][ref1]\n\n[ref1]: https://reference.com" }
+query = { "markdown": "# Sample Document
+
+Check out [this link](https://example.com) and [another one](https://test.com).
+
+![Image](https://example.com/image.png)
+
+Visit <https://autolink.com> or just https://bare-url.com
+
+[Reference link][ref1]
+
+[ref1]: https://reference.com" }
 
 try:
     # Make the API call
@@ -82,7 +92,17 @@ Using the API client, you can perform requests to the API.
 ###### Define Query
 
 ```python
-query = { "markdown": "# Sample Document\n\nCheck out [this link](https://example.com) and [another one](https://test.com).\n\n![Image](https://example.com/image.png)\n\nVisit <https://autolink.com> or just https://bare-url.com\n\n[Reference link][ref1]\n\n[ref1]: https://reference.com" }
+query = { "markdown": "# Sample Document
+
+Check out [this link](https://example.com) and [another one](https://test.com).
+
+![Image](https://example.com/image.png)
+
+Visit <https://autolink.com> or just https://bare-url.com
+
+[Reference link][ref1]
+
+[ref1]: https://reference.com" }
 ```
 
 ###### Simple Request
@@ -204,7 +224,17 @@ from apiverve_markdownlinkextractor.apiClient import MarkdownlinkextractorAPICli
 
 api = MarkdownlinkextractorAPIClient("[YOUR_API_KEY]")
 
-query = { "markdown": "# Sample Document\n\nCheck out [this link](https://example.com) and [another one](https://test.com).\n\n![Image](https://example.com/image.png)\n\nVisit <https://autolink.com> or just https://bare-url.com\n\n[Reference link][ref1]\n\n[ref1]: https://reference.com" }
+query = { "markdown": "# Sample Document
+
+Check out [this link](https://example.com) and [another one](https://test.com).
+
+![Image](https://example.com/image.png)
+
+Visit <https://autolink.com> or just https://bare-url.com
+
+[Reference link][ref1]
+
+[ref1]: https://reference.com" }
 
 try:
     result = api.execute(query)
@@ -225,7 +255,17 @@ from apiverve_markdownlinkextractor.apiClient import MarkdownlinkextractorAPICli
 
 api = MarkdownlinkextractorAPIClient("[YOUR_API_KEY]")
 
-query = { "markdown": "# Sample Document\n\nCheck out [this link](https://example.com) and [another one](https://test.com).\n\n![Image](https://example.com/image.png)\n\nVisit <https://autolink.com> or just https://bare-url.com\n\n[Reference link][ref1]\n\n[ref1]: https://reference.com" }
+query = { "markdown": "# Sample Document
+
+Check out [this link](https://example.com) and [another one](https://test.com).
+
+![Image](https://example.com/image.png)
+
+Visit <https://autolink.com> or just https://bare-url.com
+
+[Reference link][ref1]
+
+[ref1]: https://reference.com" }
 
 try:
     result = api.execute(query)
@@ -259,7 +299,17 @@ The client supports the context manager protocol for automatic resource cleanup:
 ```python
 from apiverve_markdownlinkextractor.apiClient import MarkdownlinkextractorAPIClient, MarkdownlinkextractorAPIClientError
 
-query = { "markdown": "# Sample Document\n\nCheck out [this link](https://example.com) and [another one](https://test.com).\n\n![Image](https://example.com/image.png)\n\nVisit <https://autolink.com> or just https://bare-url.com\n\n[Reference link][ref1]\n\n[ref1]: https://reference.com" }
+query = { "markdown": "# Sample Document
+
+Check out [this link](https://example.com) and [another one](https://test.com).
+
+![Image](https://example.com/image.png)
+
+Visit <https://autolink.com> or just https://bare-url.com
+
+[Reference link][ref1]
+
+[ref1]: https://reference.com" }
 
 # Using context manager ensures proper cleanup
 with MarkdownlinkextractorAPIClient("[YOUR_API_KEY]") as api:
@@ -285,7 +335,17 @@ from apiverve_markdownlinkextractor.apiClient import MarkdownlinkextractorAPICli
 # Enable debug mode
 api = MarkdownlinkextractorAPIClient("[YOUR_API_KEY]", debug=True)
 
-query = { "markdown": "# Sample Document\n\nCheck out [this link](https://example.com) and [another one](https://test.com).\n\n![Image](https://example.com/image.png)\n\nVisit <https://autolink.com> or just https://bare-url.com\n\n[Reference link][ref1]\n\n[ref1]: https://reference.com" }
+query = { "markdown": "# Sample Document
+
+Check out [this link](https://example.com) and [another one](https://test.com).
+
+![Image](https://example.com/image.png)
+
+Visit <https://autolink.com> or just https://bare-url.com
+
+[Reference link][ref1]
+
+[ref1]: https://reference.com" }
 
 # Debug information will be printed to console
 result = api.execute(query)
@@ -300,8 +360,19 @@ from apiverve_markdownlinkextractor.apiClient import MarkdownlinkextractorAPICli
 
 api = MarkdownlinkextractorAPIClient("[YOUR_API_KEY]")
 
+query = { "markdown": "# Sample Document
+
+Check out [this link](https://example.com) and [another one](https://test.com).
+
+![Image](https://example.com/image.png)
+
+Visit <https://autolink.com> or just https://bare-url.com
+
+[Reference link][ref1]
+
+[ref1]: https://reference.com" }
+
 try:
-    query = { "markdown": "# Sample Document\n\nCheck out [this link](https://example.com) and [another one](https://test.com).\n\n![Image](https://example.com/image.png)\n\nVisit <https://autolink.com> or just https://bare-url.com\n\n[Reference link][ref1]\n\n[ref1]: https://reference.com" }
     result = api.execute(query)
     print(result)
 finally:
