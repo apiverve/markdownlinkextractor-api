@@ -4,19 +4,31 @@ declare module '@apiverve/markdownlinkextractor' {
     secure?: boolean;
   }
 
+  /**
+   * Describes fields the current plan does not unlock. Locked fields arrive as null
+   * in `data`; `locked_fields` names them, using dot paths for nested fields.
+   * Absent when the plan unlocks everything.
+   */
+  export interface PremiumInfo {
+    message: string;
+    upgrade_url: string;
+    locked_fields: string[];
+  }
+
   export interface markdownlinkextractorResponse {
     status: string;
     error: string | null;
     data: MarkdownLinkExtractorData;
     code?: number;
+    premium?: PremiumInfo;
   }
 
 
   interface MarkdownLinkExtractorData {
-      totalLinks:     number;
+      totalLinks:     number | null;
       links:          Link[];
       categories:     Categories;
-      markdownLength: number;
+      markdownLength: number | null;
   }
   
   interface Categories {
@@ -27,15 +39,15 @@ declare module '@apiverve/markdownlinkextractor' {
   }
   
   interface Email {
-      count: number;
+      count: number | null;
       links: Link[];
   }
   
   interface Link {
-      text:       string;
-      url:        string;
-      type:       string;
-      reference?: string;
+      text:       null | string;
+      url:        null | string;
+      type:       null | string;
+      reference?: null | string;
   }
 
   export default class markdownlinkextractorWrapper {
