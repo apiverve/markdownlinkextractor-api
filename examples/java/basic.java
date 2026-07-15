@@ -12,8 +12,22 @@ public class BasicExample {
         MarkdownLinkExtractorAPIClient client = new MarkdownLinkExtractorAPIClient("YOUR_API_KEY_HERE");
 
         try {
-            // Execute the API request (no parameters required)
-            APIResponse response = client.execute(null);
+            // Request body
+            Map&lt;String, Object&gt; parameters &#x3D; new HashMap&lt;&gt;();
+        parameters.put(&quot;markdown&quot;, &quot;# Sample Document
+
+Check out [this link](https://example.com) and [another one](https://test.com).
+
+![Image](https://example.com/image.png)
+
+Visit &lt;https://autolink.com&gt; or just https://bare-url.com
+
+[Reference link][ref1]
+
+[ref1]: https://reference.com&quot;);
+
+            // Execute the API request
+            APIResponse response = client.execute(parameters);
 
             // Check if the request was successful
             if (response.isSuccess()) {
