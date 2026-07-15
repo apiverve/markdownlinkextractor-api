@@ -20,7 +20,7 @@ namespace APIVerve.Examples
         private static readonly string API_URL = "https://api.apiverve.com/v1/markdownlinkextractor";
 
         /// <summary>
-        /// Make a GET request to the Markdown Link Extractor API
+        /// Make a POST request to the Markdown Link Extractor API
         /// </summary>
         static async Task<JsonDocument> CallMarkdownLinkExtractorAPI()
         {
@@ -29,7 +29,23 @@ namespace APIVerve.Examples
                 using var client = new HttpClient();
                 client.DefaultRequestHeaders.Add("x-api-key", API_KEY);
 
-                var response = await client.GetAsync(API_URL);
+                // Request body
+                var requestBody &#x3D; new { markdown &#x3D; &quot;# Sample Document
+
+Check out [this link](https://example.com) and [another one](https://test.com).
+
+![Image](https://example.com/image.png)
+
+Visit &lt;https://autolink.com&gt; or just https://bare-url.com
+
+[Reference link][ref1]
+
+[ref1]: https://reference.com&quot; };
+
+                var jsonContent = JsonSerializer.Serialize(requestBody);
+                var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+                var response = await client.PostAsync(API_URL, content);
 
                 // Check if response is successful
                 response.EnsureSuccessStatusCode();
