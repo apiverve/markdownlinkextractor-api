@@ -197,11 +197,112 @@ x-api-key: YOUR_API_KEY_HERE
 Get your API key: [https://apiverve.com](https://apiverve.com)
 
 ### Response Format
-All responses are JSON with this structure:
+
+Every APIVerve endpoint returns the same envelope — check `status`, then read `data`:
+
 ```json
 {
   "status": "ok",
+  "error": null,
   "data": { ... }
+}
+```
+
+### Example Response
+
+A real response from the Markdown Link Extractor API:
+
+```json
+{
+  "status": "ok",
+  "error": null,
+  "data": {
+    "totalLinks": 6,
+    "links": [
+      {
+        "text": "this link",
+        "url": "https://example.com",
+        "type": "inline"
+      },
+      {
+        "text": "another one",
+        "url": "https://test.com",
+        "type": "inline"
+      },
+      {
+        "text": "Image",
+        "url": "https://example.com/image.png",
+        "type": "inline"
+      },
+      {
+        "text": "Reference link",
+        "url": "https://reference.com",
+        "type": "reference",
+        "reference": "ref1"
+      },
+      {
+        "text": "https://autolink.com",
+        "url": "https://autolink.com",
+        "type": "autolink"
+      },
+      {
+        "text": "https://bare-url.com",
+        "url": "https://bare-url.com",
+        "type": "bare"
+      }
+    ],
+    "categories": {
+      "internal": {
+        "count": 0,
+        "links": []
+      },
+      "external": {
+        "count": 6,
+        "links": [
+          {
+            "text": "this link",
+            "url": "https://example.com",
+            "type": "inline"
+          },
+          {
+            "text": "another one",
+            "url": "https://test.com",
+            "type": "inline"
+          },
+          {
+            "text": "Image",
+            "url": "https://example.com/image.png",
+            "type": "inline"
+          },
+          {
+            "text": "Reference link",
+            "url": "https://reference.com",
+            "type": "reference",
+            "reference": "ref1"
+          },
+          {
+            "text": "https://autolink.com",
+            "url": "https://autolink.com",
+            "type": "autolink"
+          },
+          {
+            "text": "https://bare-url.com",
+            "url": "https://bare-url.com",
+            "type": "bare"
+          }
+        ]
+      },
+      "email": {
+        "count": 0,
+        "links": []
+      },
+      "other": {
+        "count": 0,
+        "links": []
+      }
+    },
+    "markdownLength": 253
+  }
 }
 ```
 
