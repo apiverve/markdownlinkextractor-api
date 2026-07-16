@@ -1,0 +1,49 @@
+{
+    "name": "apiverve/markdownlinkextractor",
+    "description": "Markdown Link Extractor parses markdown documents and extracts all links including inline, reference, autolinks, and image URLs.",
+    "version": "1.2.0",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "APIVerve",
+            "email": "hello@apiverve.com",
+            "homepage": "https://apiverve.com"
+        }
+    ],
+    "keywords": [
+        "api",
+        "apiverve",
+        "markdownlinkextractor",
+        "markdown links",
+        "link parser",
+        "url extractor",
+        "markdown analyzer",
+        "link finder"
+    ],
+    "homepage": "https://apiverve.com/marketplace/markdownlinkextractor?utm_source=php&utm_medium=homepage",
+    "support": {
+        "email": "hello@apiverve.com",
+        "docs": "https://docs.apiverve.com/ref/markdownlinkextractor",
+        "source": "https://github.com/apiverve/markdownlinkextractor-API/tree/main/php"
+    },
+    "require": {
+        "php": ">=7.4",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "APIVerve\\Markdownlinkextractor\\": "php/src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "APIVerve\\Markdownlinkextractor\\Tests\\": "php/tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
