@@ -18,7 +18,7 @@ servers:
 paths:
   /v1/markdownlinkextractor:
     post:
-      summary: Extract Links from Markdown
+      summary: Markdown Link Extractor
       description: Parse markdown and extract all links with categorization
       operationId: markdownlinkextractor
       parameters: []
