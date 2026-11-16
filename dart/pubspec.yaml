@@ -1,6 +1,6 @@
 name: apiverve_markdownlinkextractor
 description: "Markdown Link Extractor parses markdown documents and extracts all links including inline, reference, autolinks, and image URLs."
-version: 1.2.5
+version: 1.2.6
 homepage: https://apiverve.com/marketplace/markdownlinkextractor?utm_source=dart&utm_medium=referral&utm_content=homepage
 repository: https://github.com/apiverve/markdownlinkextractor-api/tree/main/dart
 
